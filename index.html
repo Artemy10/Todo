@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <title>Practice #2 | Todo app</title>
+
+</head>
+<body>
+  <section class="section flex align-center valign-start">
+    <div id="main" class="main">
+      <div class="application">
+        <h1 class="application-name">TODO</h1>
+        <img src="./images/icon-sun.svg" alt="">
+      </div>
+      <form name="event" class="event mb-30">
+        <span style="min-width: 21px" class="checkbox">
+          <img name="check-form" src="./images/icon-check.svg" alt="" class="img-check">
+        </span>
+        <input type="text" name="event" class="inp-event" autocomplete="off" placeholder="Create a new todo...">
+      </form>
+      <div>
+        <div id="list"></div>
+        <div class="functional-event">
+          <div>
+            <p id="countItems"></p>
+          </div>
+          <form name="filterSettings" class="flex">
+            <label name="filterName" for="radioAll">All</label>
+            <input id="radioAll" type="radio" name="filter" value="All" checked>
+            <label name="filterName" for="radioActive">Active</label>
+            <input id="radioActive" type="radio" name="filter" value="Active">
+            <label name="filterName" for="radioCompleted">Completed</label>
+            <input id="radioCompleted" type="radio" name="filter" value="Completed">
+          </form>
+          <div>
+            <input id="btnClearCompleted" class="btnClearCompleted" type="button" value="Clear Completed" title="Will delete all fulfillment items">
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <p>Drag and drop to reader list</p>
+      </div>
+    </div>
+  </section>
+  <script src="index.js"></script>
+</body>
+</html>
