@@ -5,6 +5,7 @@
 }
 :root{
   --image-background-dark: url(./images/bg-desktop-dark.jpg);
+  --iamge-background-light: url(.images/bg-desktop-light.jpg);
 }
 body{
   font-family: 'Josefin Sans', sans-serif;
