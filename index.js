@@ -5,6 +5,7 @@ const filterForm = document.forms.filterSettings;
 const noteList = document.getElementById('list');
 const mainContainer = document.getElementById('main');
 const inputForm = document.querySelector('input[name="event"]');
+const btnChangeTheme = document.querySelector('button.btn-change-theme');
 
 inputForm.setAttribute('data-checked', false);
 
@@ -103,6 +104,8 @@ mainContainer.addEventListener('click', function(e) {
 })
 
 function createNote(model, filter) {
+	getTheme();
+
 	noteList.innerHTML = '';
 	noteList.setAttribute('class', 'list-reverse');
 
@@ -392,6 +395,23 @@ function deleteItem() {
 	})
 }
 
+function changeTheme() {
+	if(document.documentElement.getAttribute('theme') == 'dark') {
+		document.documentElement.setAttribute('theme', 'light');
+		localStorage.theme = 'light';
+	}else {
+		document.documentElement.setAttribute('theme', 'dark');
+		localStorage.theme = 'dark';
+	}
+}
 
+function getTheme(theme) {
+	if(localStorage.theme == 'dark' ? document.documentElement.setAttribute('theme', 'dark') : document.documentElement.setAttribute('theme', 'light'));
+}
+
+btnChangeTheme.addEventListener('click', changeTheme);
 
 createNote(items, localStorage.filter);
+
+// setTimeout(() => changeTheme(localStorage.theme),4000)
+ // console.log(root)
