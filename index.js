@@ -6,6 +6,7 @@ const noteList = document.getElementById('list');
 const mainContainer = document.getElementById('main');
 const inputForm = document.querySelector('input[name="event"]');
 const btnChangeTheme = document.querySelector('button.btn-change-theme');
+const imageTheme = document.getElementById('image-theme');
 
 inputForm.setAttribute('data-checked', false);
 
@@ -397,16 +398,24 @@ function deleteItem() {
 
 function changeTheme() {
 	if(document.documentElement.getAttribute('theme') == 'dark') {
+		imageTheme.src = "./images/icon-sun.svg";
 		document.documentElement.setAttribute('theme', 'light');
 		localStorage.theme = 'light';
 	}else {
+		imageTheme.src = "./images/icon-moon.svg";
 		document.documentElement.setAttribute('theme', 'dark');
 		localStorage.theme = 'dark';
 	}
 }
 
 function getTheme(theme) {
-	if(localStorage.theme == 'dark' ? document.documentElement.setAttribute('theme', 'dark') : document.documentElement.setAttribute('theme', 'light'));
+	if(localStorage.theme == 'dark') {
+		imageTheme.src = "./images/icon-moon.svg";
+		document.documentElement.setAttribute('theme', 'dark');
+	}else {
+		imageTheme.src = "./images/icon-sun.svg";
+		document.documentElement.setAttribute('theme', 'light');
+	}
 }
 
 btnChangeTheme.addEventListener('click', changeTheme);
