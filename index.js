@@ -64,12 +64,15 @@ function addEvent(info) {
 	info.event.value = '';
 }
 
-form.addEventListener('submit',function(e) {
+form.addEventListener('submit', function(e) {
 	e.preventDefault();
 
-	addEvent(form);
+	if(form.event.value) {
+		addEvent(form);
 
-	createNote(items, localStorage.filter);
+		createNote(items, localStorage.filter);
+	}
+
 
 })
 
