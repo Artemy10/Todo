@@ -1,0 +1,49 @@
+@media (max-width: 1200px) {
+   .container {
+       width: 65%;
+   }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 80%;
+    }
+
+    section {
+        background-size: auto;
+    }
+    
+    .btn-del-note {
+        display: block;
+    }
+
+    .span-hover {
+        display: none;
+    }
+
+    .span-checkbox:hover {
+        visibility: visible;
+    }
+
+    .nav-footer button:hover {
+        color: var(--text-color-active);
+    }
+}
+
+@media (max-width: 576px) {
+   .container {
+       width: 95%;
+   }
+
+   .nav-footer {
+       font-size: 12px;
+   }
+
+   .app-head {
+       justify-content: space-around;
+   }
+
+   .nav-footer button:not(:last-child) {
+       margin-right: 5px;
+   }
+}

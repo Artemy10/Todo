@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+:root[theme="dark"] {
+    --image-background-dark: url(../images/bg-desktop-dark.jpg);
+    --background-color-dark: #181824;
+    --text-color-dark: hsl(234, 39%, 85%);
+    --background-input-dark: #25273c;
+    --border-color-dark: #303247;
+    --borderbott-color-dark: hsl(233, 14%, 35%);
+    --hover-color-dark: #f3f6ff;
+    --text-color-active: hsl(220, 98%, 61%);
+    --footer-color-text: #5f617a;
+}
+
+:root[theme="light"] {
+    --image-background-dark: url(../images/bg-desktop-light.jpg);
+	--background-color-dark: #fafafa;
+	--text-color-dark: hsl(234, 11%, 52%);
+	--background-input-dark: #fff;
+	--border-color-dark: #e4e4e6;
+	--borderbott-color-dark: hsl(234, 39%, 85%);
+	--hover-color-dark: #000;
+    --text-color-active: hsl(220, 98%, 61%);
+    --footer-color-text: #5f617a;
+}
+
+section {
+    min-height: 100vh;
+    background-image: var(--image-background-dark);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: var(--background-color-dark);
+}
+
+.container {
+    width: 35%;
+    margin-top: 120px;
+    margin-bottom: 40px;
+}
+
+.cont-body-app {
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px #191919;
+}
+
+.app-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.nav-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    color: var(--footer-color-text);
+    font-size: 14px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    background-color: var(--background-input-dark);
+}
+
+.nav-footer button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--footer-color-text);
+    cursor: pointer;
+}
+
+.nav-footer button:hover {
+    color: var(--hover-color-dark);
+}
+
+.nav-footer button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.todo-list {
+    border-radius: 5px;
+}
+
+.todo-list ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.todo-list ul li:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.todo-list ul li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    background-color: var(--background-input-dark);
+    border-bottom: 1px solid var(--border-color-dark);
+}
+
+.todo-list ul li .inp-event {
+    width: 100%;
+    padding: 10px 0;
+}
+
+.todo-list ul li:hover .btn-del-note {
+    display: block;
+}
+
+.app-title {
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+}
+
+.btn-change-theme {
+    font-size: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.create-note {
+    background-color: var(--background-input-dark);
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px #191919;
+}
+
+.span-checkbox {
+    margin-right: 20px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--border-color-dark);
+    border-radius: 50%;
+    position: relative;
+}
+
+.img-check {
+    display: none;
+    position: absolute;
+    left: calc(50% - 5px);
+    top: calc(50% - 4px);
+    pointer-events: none;
+}
+
+.checkbox-hidden {
+    overflow: hidden;
+    visibility: visible;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.inp-create-note {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding: 10px 0;
+    color: var(--text-color-dark);
+}
+
+.inp-event {
+    font-size: 18px;
+    color: var(--text-color-dark);
+}
+
+.btn-del-note {
+    display: none;
+    font-size: 0;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.create-note.checked .span-checkbox {
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    outline: none;
+}
+
+.create-note.checked .img-check {
+    display: block;
+}
+
+.create-note.checked .inp-create-note {
+    text-decoration: line-through;
+    color: #46485d;
+}
+
+.note-complete .inp-event {
+    text-decoration: line-through;
+    color: #46485d;
+}
+
+.note-container {
+    cursor: move;
+}
+
+.note-container.note-complete .span-checkbox {
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    outline: none;
+}
+
+.note-container.note-complete .img-check {
+    display: block;
+}
+
+.nav-footer .active {
+    color: var(--text-color-active);
+}
+
+.span-hover {
+    visibility: hidden;
+    margin-right: 20px;
+    font-size: 0;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    outline: 1px solid transparent;
+    background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.sub-span-hover {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    outline: 1px solid transparent;
+    border: none;
+    margin: 0;
+    background-color: var(--background-input-dark);
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    cursor: pointer;
+}
+
+.cont-footer-app {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    color: #5f617a;
+    font-size: 13px;
+}
+
+.span-checkbox:hover {
+    visibility: hidden;
+}
+
+.span-checkbox:hover .span-hover {
+    visibility: visible;
+}
+
+.create-note.checked .span-hover {
+    visibility: hidden;
+}
+
+.create-note.checked .span-checkbox {
+    visibility: visible;
+}
+
+.note-container.note-complete .span-hover {
+    visibility: hidden;
+}
+
+.note-container.note-complete .span-checkbox {
+    visibility: visible;
+}
+
+.selected {
+    opacity: 0.6;
+}

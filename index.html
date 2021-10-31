@@ -1,54 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="base.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
-  <title>Practice #2 | Todo app</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/media.css">
+
+    <title>Todo app</title>
 </head>
 <body>
-  <section class="section flex align-center valign-start">
-    <div id="main" class="main">
-      <div class="application">
-        <h1 class="application-name">TODO</h1>
-        <button class="btn-change-theme"><img id="image-theme" alt="sun" title="change theme"></button>
-      </div>
-      <form name="event" class="event mb-30 shadow">
-        <span style="min-width: 21px" class="checkbox">
-          <img name="check-form" src="./images/icon-check.svg" alt="" class="img-check">
-        </span>
-        <input type="text" name="event" class="inp-event" autocomplete="off" placeholder="Create a new todo...">
-      </form>
-      <div class="shadow">
-        <div id="list"></div>
-        <div class="functional-event">
-          <div>
-            <p id="countItems"></p>
-          </div>
-          <form name="filterSettings" class="flex">
-            <label name="filterName" for="radioAll">All</label>
-            <input id="radioAll" type="radio" name="filter" value="All" checked>
-            <label name="filterName" for="radioActive">Active</label>
-            <input id="radioActive" type="radio" name="filter" value="Active">
-            <label name="filterName" for="radioCompleted">Completed</label>
-            <input id="radioCompleted" type="radio" name="filter" value="Completed">
-          </form>
-          <div>
-            <input id="btnClearCompleted" class="btnClearCompleted" type="button" value="Clear Completed" title="Will delete all fulfillment items">
-          </div>
+    <section class="flex align-center">
+        <div class="container">
+            <div class="app-head">
+                <h2 class="app-title">todo</h2>
+                <button id="change-theme" class="btn-change-theme">
+                    <img id="img-theme" src="" alt="sun">
+                </button>
+            </div>
+            <form class="create-note" name="create-note">
+                <span class="span-checkbox">
+                    <span class="span-hover">
+                        <span class="sub-span-hover"></span>
+                    </span>
+                    <input class="checkbox-hidden" type="checkbox" name="checkbox">
+                    <img class="img-check" width="10px" height="9px" src="./images/icon-check.svg" alt="arrow-done"/>
+                </span>
+                <input class="inp-create-note" placeholder="Create a new todo..." autocomplete="off" type="text" name="text">
+            </form>
+            <div class="cont-body-app">
+                <div id="root" class="todo-list"></div>
+                <div class="nav-footer">
+                    <div id="count-notes" class="count-notes"></div>
+                    <div class="buttons-active">
+                        <button data-switch="all">All</button>
+                        <button data-switch="0">Active</button>
+                        <button data-switch="1">Completed</button>
+                    </div>
+                    <div>
+                        <button id="clear-completed">Clear Completed</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cont-footer-app">
+                Drag and drop to reader list
+            </div>
         </div>
-      </div>
-      <div class="footer">
-        <p>Drag and drop to reader list</p>
-      </div>
-    </div>
-  </section>
-  <script src="index.js"></script>
+    </section>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>
