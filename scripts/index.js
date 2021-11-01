@@ -14,7 +14,7 @@ const View = {
         const className = `note-container${ !note.completed ? "" : " note-complete" }`;
 
         return `
-            <li draggable=true class="${ className }">
+            <li id=${ note.id } draggable=true class="${ className }">
                 <span onclick=Controller.handleCheck(${ note.id }) class="span-checkbox">
                     <span class="span-hover">
                         <span class="sub-span-hover"></span>
@@ -71,6 +71,8 @@ const View = {
         }
 
         this.renderCountNotes();
+
+        Controller.dragElements();
     },
 
 };
@@ -190,8 +192,70 @@ const Controller = {
         this.localStorage(this.state);
         
         View.render(this.state);
-    }
+    },
 
+    swapNote({ id : current }, { id : next }) {
+        const array = this.state.notes;
+        
+        let currEl = {};
+        let currEle = {};
+        let nextEl = {};
+
+        for (let i = 0; i < array.length; i++) {
+            if (array[i].id === current) {
+                currEl = array[i];
+                currEl.index = i;
+            }
+            
+            if (array[i].id === next) {
+                nextEl = array[i];
+                nextEl.index = i;
+            }
+        }
+
+        if (Object.keys(currEl).length && Object.keys(nextEl).length) {
+            array[currEl.index] = nextEl;
+            array[nextEl.index] = currEl;
+        }
+
+        this.state.notes = array;
+
+        this.localStorage(this.state);
+    },
+
+    dragElements() {
+        const taskList = document.getElementById("task-list");
+
+        taskList.addEventListener(`dragstart`, (e) => {
+            e.target.classList.add(`selected`);
+        })
+
+        taskList.addEventListener(`dragend`, (e) => {
+            e.target.classList.remove(`selected`);  
+        });
+
+        taskList.addEventListener(`dragover`, (e) => {
+            e.preventDefault();
+
+            const { target } = e;
+            const activeElement = taskList.querySelector(`.selected`);
+            
+            const isMoveable = activeElement !== target &&
+            target.classList.contains(`note-container`);
+
+            if (!isMoveable) {
+                return;
+            }
+
+            const nextElement = (target === activeElement.nextElementSibling) ?
+                target.nextElementSibling :
+                target;
+
+            this.swapNote(activeElement, target);
+
+            taskList.insertBefore(activeElement, nextElement);
+        });
+    }
 };
 
 (async () => {
